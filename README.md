@@ -77,41 +77,42 @@ cd mobile
 npm install
 ```
 
-Update IP configuration in:
+### Update IP configuration in:
 
-mobile/src/services/api.js
+  mobile/src/services/api.js
+  
+  mobile/src/services/socket.js
+  
+  Replace 192.168.1.2:5000 with your computer's IP address.
 
-mobile/src/services/socket.js
-
-Replace 192.168.1.2:5000 with your computer's IP address.
-
-Start the mobile app:
+### Start the mobile app:
 
 ```bash
 npx expo start
 ```
 
-📱 Running the Application
-Start MongoDB (if using local instance)
+### 📱 Running the Application
 
-Start the backend server: cd server && npm run dev
-
-Start the mobile app: cd mobile && npx expo start
-
-Scan QR code with Expo Go app or run on emulator
+  Start MongoDB (if using local instance)
+  
+  Start the backend server: cd server && npm run dev
+  
+  Start the mobile app: cd mobile && npx expo start
+  
+  Scan QR code with Expo Go app or run on emulator
 
 ### 🔧 API Endpoints
 
-Authentication
+#### Authentication
 
 POST /auth/register - User registration
 
 POST /auth/login - User login
 
-Users
+#### Users
 GET /users - Get all users (except current user)
 
-Messages
+#### Messages
 GET /conversations/:userId/messages - Get message history
 
 GET /api/conversations/:userId/messages - Alternative endpoint
@@ -132,9 +133,9 @@ typing:stop - Stop typing indicator
 
 current_online_users - Get current online users
 
-🗄 Database Models
+### 🗄 Database Models
 
-User : 
+#### User : 
 javascript
 {
   username: String,
@@ -143,7 +144,7 @@ javascript
   createdAt: Date
 }
 
-Message : 
+#### Message : 
 javascript
 {
   sender: ObjectId (User),
@@ -153,7 +154,9 @@ javascript
   deliveredTo: [ObjectId],
   createdAt: Date
 }
-🌐 Network Configuration
+
+### 🌐 Network Configuration
+
 For mobile devices to connect to your local server:
 
 Find your computer's IP address:
@@ -162,7 +165,7 @@ Windows: ipconfig
 
 Mac/Linux: ifconfig or ip addr
 
-Update IP in mobile files:
+#### Update IP in mobile files:
 
 mobile/src/services/api.js
 
@@ -188,41 +191,6 @@ json
   "password": "password123"
 }
 ```
-
-Testing Flow
-Register two users on different devices
-
-Login with both accounts
-
-Verify online status appears
-
-Start chatting with real-time messaging
-
-Test typing indicators
-
-Verify message persistence
-
-🐛 Troubleshooting
-Common Issues
-Connection refused errors
-
-Verify server IP address in mobile config
-
-Ensure devices are on same network
-
-Check firewall settings
-
-MongoDB connection issues
-
-Verify connection string in .env
-
-Check if MongoDB is running
-
-For Atlas: ensure IP is whitelisted
-
-Socket.IO connection errors
-
-Restart both server and mobile app
 
 Clear Expo cache: npx expo start --clear
 
